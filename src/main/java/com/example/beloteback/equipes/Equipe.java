@@ -20,9 +20,9 @@ public class Equipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nomEquipe;
-    private Integer pointsPlie;
-    private Integer pointsEquipe1;
-    private Integer pointsEquipe2;
+    private int[] pointsPlie;
+    private Integer totalPartie;
+    private int[] archivesParties;
 
     public Equipe() {
     }

@@ -20,7 +20,7 @@ public class EquipeService {
 
     public Equipe findById(Long id){
         return equipeRepository.findById(id).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "partie not found")
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "equipe not found")
         );
     }
     public Equipe save(Equipe equipe){
@@ -29,14 +29,13 @@ public class EquipeService {
     public Equipe updateById(Equipe equipe){
         Equipe equipeActuelle = equipeRepository.findById(equipe.getId()).orElse(null);
         if (equipe.getId() != null){
-            equipeActuelle.setDate(equipe.getDate());
-            equipeActuelle.setEquipe1(equipe.getEquipe1());
-            equipeActuelle.setEquipe2(equipe.getEquipe2());
-            equipeActuelle.setPointsEquipe1(equipe.getPointsEquipe1());
-            equipeActuelle.setPointsEquipe2(equipe.getPointsEquipe2());
+            equipeActuelle.setNomEquipe(equipe.getNomEquipe());
+            equipeActuelle.setPointsPlie(equipe.getPointsPlie());
+            equipeActuelle.setTotalPartie(equipe.getTotalPartie());
+            equipeActuelle.setArchivesParties(equipe.getArchivesParties());
             return equipeRepository.save(equipe);
         } else {
-            throw new RuntimeException("partie not found");
+            throw new RuntimeException("equipe not found");
         }
     }
     public void deleteById(Equipe equipe){
